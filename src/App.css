@@ -1,0 +1,130 @@
+.page-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: #6b5b63;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.page-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(220px, 50vw, 320px);
+  height: clamp(220px, 50vw, 320px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  outline-offset: 6px;
+}
+
+.stage:focus-visible {
+  outline: 3px solid #aa3bff;
+}
+
+.dancing-cat svg {
+  width: clamp(150px, 35vw, 220px);
+  height: clamp(150px, 35vw, 220px);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.toggle-button {
+  font-size: 18px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  background: #f48fb1;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.toggle-button:hover {
+  background: #ec6f9a;
+}
+
+.toggle-button:active {
+  transform: scale(0.96);
+}
+
+.toggle-button:focus-visible {
+  outline: 3px solid #aa3bff;
+  outline-offset: 3px;
+}
+
+.speed-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #6b5b63;
+}
+
+.page-footer {
+  font-size: 13px;
+  color: #9b8a92;
+  padding-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .page-layout {
+    gap: 24px;
+    padding: 24px 16px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stage {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .toggle-button {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .speed-label {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (hover: none) {
+  .toggle-button:hover {
+    background: #f48fb1;
+  }
+}

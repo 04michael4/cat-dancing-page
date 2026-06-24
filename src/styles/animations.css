@@ -1,0 +1,89 @@
+.dancing-cat {
+  --dance-speed: 1s;
+  display: inline-block;
+  will-change: transform;
+}
+
+.cat-svg {
+  display: block;
+}
+
+/* 정지 상태: 살짝 숨쉬는 듯한 기본 모션만 */
+.cat-body,
+.cat-head,
+.cat-ear,
+.cat-tail,
+.cat-paw {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes cat-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25%      { transform: translateY(-22px) scale(1.04, 0.96); }
+  50%      { transform: translateY(0) scale(0.96, 1.04); }
+  75%      { transform: translateY(-10px) rotate(4deg); }
+}
+
+@keyframes cat-sway {
+  0%, 100% { transform: rotate(-8deg); }
+  50%      { transform: rotate(8deg); }
+}
+
+@keyframes cat-ear-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-12deg); }
+}
+
+@keyframes cat-tail-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(18deg); }
+}
+
+@keyframes cat-paw-tap {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+.dancing-cat.is-dancing .cat-svg {
+  animation: cat-sway var(--dance-speed) ease-in-out infinite;
+}
+
+.dancing-cat.is-dancing .cat-body,
+.dancing-cat.is-dancing .cat-head {
+  animation: cat-bounce var(--dance-speed) ease-in-out infinite;
+}
+
+.dancing-cat.is-dancing .cat-ear-left {
+  animation: cat-ear-wiggle calc(var(--dance-speed) * 0.6) ease-in-out infinite;
+}
+
+.dancing-cat.is-dancing .cat-ear-right {
+  animation: cat-ear-wiggle calc(var(--dance-speed) * 0.6) ease-in-out infinite reverse;
+}
+
+.dancing-cat.is-dancing .cat-tail {
+  animation: cat-tail-wag calc(var(--dance-speed) * 0.5) ease-in-out infinite;
+}
+
+.dancing-cat.is-dancing .cat-paw-left {
+  animation: cat-paw-tap var(--dance-speed) ease-in-out infinite;
+}
+
+.dancing-cat.is-dancing .cat-paw-right {
+  animation: cat-paw-tap var(--dance-speed) ease-in-out infinite;
+  animation-delay: calc(var(--dance-speed) / -2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dancing-cat.is-dancing .cat-svg,
+  .dancing-cat.is-dancing .cat-body,
+  .dancing-cat.is-dancing .cat-head,
+  .dancing-cat.is-dancing .cat-ear-left,
+  .dancing-cat.is-dancing .cat-ear-right,
+  .dancing-cat.is-dancing .cat-tail,
+  .dancing-cat.is-dancing .cat-paw-left,
+  .dancing-cat.is-dancing .cat-paw-right {
+    animation: none;
+  }
+}
